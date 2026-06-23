@@ -6,6 +6,7 @@ namespace HelloWorldProject
     {
         public static void Main(string[] args)
         {
+            DotNetEnv.Env.Load();
             var builder = WebApplication.CreateBuilder(args);
 
             // Grab the connection string from appsettings.json

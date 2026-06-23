@@ -1,6 +1,5 @@
 @HelloWorldProject_HostAddress = http://localhost:5217
 
-GET {{HelloWorldProject_HostAddress}}/weatherforecast/
-Accept: application/json
-
+POST http://192.168.1.129:5000/todos/seed
+Content-Type: application/json
 ###
