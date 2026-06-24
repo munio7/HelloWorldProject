@@ -1,5 +1,3 @@
-@HelloWorldProject_HostAddress = http://localhost:5217
-
-POST http://192.168.1.129:5000/todos/seed
+POST http://192.168.1.200:5000/todos/seed
 Content-Type: application/json
 ###

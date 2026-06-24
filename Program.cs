@@ -26,9 +26,9 @@ namespace HelloWorldProject
             });
 
             // Endpoint to quickly seed a test item so the DB isn't empty
-            app.MapPost("/todos/seed", async (TestDbContext db) =>
+            app.MapPost("/todos/seed/{todo_name}", async (string todo_name, TestDbContext db) =>
             {
-                var newItem = new TodoItem { Title = "Hello World from Postgres on Pi!", IsCompleted = false };
+                var newItem = new TodoItem { Title = todo_name, IsCompleted = false };
                 db.Todos.Add(newItem);
                 await db.SaveChangesAsync();
                 return Results.Created($"/todos/{newItem.Id}", newItem);
