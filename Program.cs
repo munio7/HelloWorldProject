@@ -33,6 +33,16 @@ namespace HelloWorldProject
                 await db.SaveChangesAsync();
                 return Results.Created($"/todos/{newItem.Id}", newItem);
             });
+            app.MapPost("/todos/complete/{todo_id}", async (int todo_id, TestDbContext db) =>
+            {
+                TodoItem? todo = await db.Todos.FirstOrDefaultAsync(t => t.Id == todo_id);
+                if (todo == null)
+                    return Results.NotFound($"TodoItem with id {todo_id} not found.");
+
+                todo.IsCompleted = true;
+                await db.SaveChangesAsync();
+                return Results.Ok(todo);
+            });
 
             app.Run();
         }
